@@ -1,0 +1,9 @@
+﻿Scripts
+*.ico
+*.config
+*.csproj
+Global.asax
+Global.asax.cs
+bin
+obj
+Content

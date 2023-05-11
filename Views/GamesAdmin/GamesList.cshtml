@@ -1,0 +1,55 @@
+﻿@model Cinema.Course.Models.Game[]
+
+<div>
+    @foreach (var game in Model)
+    {
+        <div>
+            @game.Id
+            @game.Name
+            @game.Description
+            @game.MinAge
+            @game.Rating
+
+            <div>
+                @foreach (var type in game.Types)
+                {
+                    <div>
+                        @type
+                    </div>
+                }
+            </div>
+            <div>
+                @foreach (var genre in game.Genres)
+                {
+                    <div>
+                        @genre
+                    </div>
+                }
+            </div>
+            <div>
+                @foreach (var review in game.Reviews)
+                {
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    @review.Text
+                                </div>
+                                <div>
+                                    @review.Score
+                                </div>
+                            </div>
+                            <div>
+                                @review.Critic.Name
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+            <div>
+                <img src="@game.ImageUrl" />
+            </div>
+        </div>
+    }
+</div>
