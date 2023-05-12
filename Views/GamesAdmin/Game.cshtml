@@ -1,0 +1,13 @@
+﻿@model Cinema.Course.Models.GameGetModel
+@{
+    ViewBag.Title = "Game";
+}
+
+<h1>
+    <span itemprop="name">@Model.Name</span> (игра @Model.ReleaseDate.Year)
+    <span class="revs">
+        <a href="#users">отзывы</a> и
+        <a href="#critics">обзоры</a>
+    </span>
+</h1>
+
