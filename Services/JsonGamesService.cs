@@ -19,20 +19,20 @@ namespace Cinema.Course.Services
             pathToJson = Context.Server.MapPath(jsonFilePath);
         }
 
-        public Game[] GetAllGames()
+        public GameListModel[] GetAllGames()
         {
             var fullModel = GetDataFromFile();
             return fullModel.Games;
         }
 
-        public Game GetGameById(int id)
+        public GameListModel GetGameById(int id)
         {
             var fullModel = GetDataFromFile();
             var ids = fullModel.Games.Select(x => x.Name);
             return fullModel.Games.FirstOrDefault(game => game.Id == id);
         }
 
-        public bool UpdateMovie(Game updateGame)
+        public bool UpdateMovie(GameListModel updateGame)
         {
             var fullModel=GetDataFromFile();
             var movieToUpdate = fullModel.Games.First(movie => movie.Id == updateGame.Id);
@@ -42,14 +42,14 @@ namespace Cinema.Course.Services
             }
 
             movieToUpdate.Name= updateGame.Name;
-            movieToUpdate.Reviews = updateGame.Reviews;
             movieToUpdate.Description = updateGame.Description;
             movieToUpdate.Genres = updateGame.Genres;
             movieToUpdate.ImageUrl = updateGame.ImageUrl;
             movieToUpdate.MinAge = updateGame.MinAge;
             movieToUpdate.Name = updateGame.Name;
-            movieToUpdate.Rating = updateGame.Rating;
-            movieToUpdate.Types = updateGame.Types;
+            movieToUpdate.CriticsRating = updateGame.CriticsRating;
+            movieToUpdate.GamersRating = updateGame.GamersRating;
+            movieToUpdate.Platforms = updateGame.Platforms;
             SaveDataToFile(fullModel);
             return true;
         }

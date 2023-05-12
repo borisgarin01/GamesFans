@@ -8,8 +8,8 @@ namespace Cinema.Course.Services
 {
     public interface IGamesService
     {
-        Game GetGameById(int id);
-        Game[] GetAllGames();
-        bool UpdateMovie(Game updateGame);
+        GameListModel GetGameById(int id);
+        GameListModel[] GetAllGames();
+        bool UpdateMovie(GameListModel updateGame);
     }
 }
