@@ -1,54 +1,37 @@
-﻿@model Cinema.Course.Models.Game[]
+﻿@model Cinema.Course.Models.GameListModel[]
 
-<div>
-    @foreach (var game in Model)
+<div id="loop" class="list clear">
+    @foreach (Cinema.Course.Models.GameListModel game in Model)
     {
-        <div>
-            @game.Id
-            @game.Name
-            @game.Description
-            @game.MinAge
-            @game.Rating
 
-            <div>
-                @foreach (var type in game.Types)
-                {
-                    <div>
-                        @type
-                    </div>
-                }
-            </div>
-            <div>
-                @foreach (var genre in game.Genres)
-                {
-                    <div>
-                        @genre
-                    </div>
-                }
-            </div>
-            <div>
-                @foreach (var review in game.Reviews)
-                {
-                    <div>
-                        <div>
-                            <div>
-                                <div>
-                                    @review.Text
-                                </div>
-                                <div>
-                                    @review.Score
-                                </div>
-                            </div>
-                            <div>
-                                @review.Critic.Name
-                            </div>
-                        </div>
 
-                    </div>
-                }
+        <div class="post clear">
+            <a href="@game.ImageUrl" title="«The Legend of Zelda: Tears of the Kingdom»" class="thumb"><img class="post-image" src="@game.ImageUrl" alt="The Legend of Zelda: Tears of the Kingdom"></a>
+
+            
+            <a class="name" href="@game.ImageUrl">@game.Name</a>
+            <div class="post-meta"><p>Дата выхода: @game.ReleaseDate.ToLongDateString()</p></div>
+            <div class="post-meta">
+                <p>
+                    Платформа: @foreach (Cinema.Course.Models.Platform platform in game.Platforms)
+                    {@platform<text>, </text>}
+                </p>
             </div>
-            <div>
-                <img src="@game.ImageUrl" />
+            <div class="post-meta"><p>Жанр: РПГ, Экшен</p></div><div class="post-content">Краткое описание: @game.Description</div>
+            <div class="ratings-graph">
+                <div class="graph-critic">
+                    <div class="graph">
+                        <div class="small-score mark-8">@game.CriticsRating</div>
+                        Рейтинг критиков
+                        <div class="graph-body"><div style="width:80%" class="rating-graph mark-8"></div></div>
+                    </div>
+                </div>
+                <div class="graph-critic">
+                    <div class="graph">
+                        <div class="small-score mark-9">@game.GamersRating</div>
+                        Игроки<div class="graph-body"><div class="rating-graph mark-9" style="width:88%"></div></div>
+                    </div>
+                </div>
             </div>
         </div>
     }
