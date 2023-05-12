@@ -2,6 +2,6 @@
 {
     public class JsonGamesModel
     {
-        public Game[] Games { get; set; }
+        public GameListModel[] Games { get; set; }
     }
 }
